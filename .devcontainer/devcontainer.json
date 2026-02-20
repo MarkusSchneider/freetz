@@ -1,0 +1,35 @@
+{
+    "name": "FritzBox 6591 Freetz Firmware Builder",
+    // Offizielles pfichtner/freetz Docker-Image als Build-Umgebung
+    "image": "pfichtner/freetz",
+    // Das lokale Workspace-Verzeichnis wird als /workspace in den Container gemountet.
+    // Alle Dateien (Quellcode, Build-Artefakte, Konfiguration) liegen damit auf dem Host-System.
+    "workspaceFolder": "/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    // VS Code verbindet sich als "builduser" – dieser wird vom Container-Entrypoint
+    // automatisch mit der UID des /workspace-Verzeichnisses angelegt (kein manuelles UID-Mapping nötig).
+    "remoteUser": "builduser",
+    "containerEnv": {
+        // Fehlende Build-Voraussetzungen werden beim Start automatisch nachinstalliert
+        "AUTOINSTALL_PREREQUISITES": "y"
+    },
+    // Erhöhtes NOFILE-Limit, um Fehler beim Entpacken großer Images zu vermeiden (Issue #37)
+    "runArgs": [
+        "--ulimit",
+        "nofile=262144:262144"
+    ],
+    // freetz-ng wird beim ersten Start automatisch geklont, falls noch nicht vorhanden
+    "postCreateCommand": "[ -d /workspace/freetz-ng/.git ] || git clone https://github.com/Freetz-NG/freetz-ng.git /workspace/freetz-ng",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // Makefile-Unterstützung (Syntax-Highlighting, Targets anzeigen etc.)
+                "ms-vscode.makefile-tools"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "makefile.makefilePath": "/workspace/freetz-ng/Makefile"
+            }
+        }
+    }
+}
