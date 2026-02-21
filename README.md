@@ -23,8 +23,8 @@ Dieses Repository enthält eine vorkonfigurierte Dev-Container-Umgebung zum Erst
 
 ```bash
 # Falls noch nicht geklont:
-git clone <dieses-repo> freetz-workspace
-cd freetz-workspace
+git clone <dieses-repo> freetz
+cd freetz
 code .
 ```
 
