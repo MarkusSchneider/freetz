@@ -12,6 +12,17 @@ git pull
 cp /workspace/fritz6591-cable.config /workspace/freetz-ng/.config
 make oldconfig   # Neue Optionen mit Standardwerten auffüllen
 ```
+Image Erstellen
+```bash
+make
+```
+Das Image liegt dann unter freetz-ng/images
+
+Konfiguration sichern
+````bash
+cp /workspace/freetz-ng/.config /workspace/fritz6591-cable.config
+```
+
 ---
 
 ## Voraussetzungen
