@@ -4,6 +4,16 @@ Dieses Repository enthält eine vorkonfigurierte Dev-Container-Umgebung zum Erst
 
 ---
 
+### Bestehende Konfiguration wieder nutzen
+
+```bash
+cd /freetz-ng
+git pull
+cp /workspace/fritz6591-cable.config /workspace/freetz-ng/.config
+make oldconfig   # Neue Optionen mit Standardwerten auffüllen
+```
+---
+
 ## Voraussetzungen
 
 | Werkzeug | Hinweis |
