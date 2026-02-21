@@ -1,10 +1,12 @@
-.freetz-ng
-.freetz-dl
+.bash_history
 .cache/
+.devcontainer/*Marker
 .dotnet/
+.freetz-dl
+.freetz-ng
+.freetz-signature
 .gitconfig
 .ssh/
 .sudo_as_admin_successful
 .vscode-server/
-.devcontainer/*Marker
 .wget-hsts
