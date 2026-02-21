@@ -13,11 +13,18 @@
         // Fehlende Build-Voraussetzungen werden beim Start automatisch nachinstalliert
         "AUTOINSTALL_PREREQUISITES": "y"
     },
+    // HOME explizit auf /home/builduser setzen, damit VS Code .vscode-server etc. nicht unter /workspace ablegt
+    "remoteEnv": {
+        "HOME": "/home/builduser"
+    },
     // Erhöhtes NOFILE-Limit, um Fehler beim Entpacken großer Images zu vermeiden (Issue #37)
     "runArgs": [
         "--ulimit",
         "nofile=262144:262144"
     ],
+    // Setzt das Home-Verzeichnis von builduser auf /home/builduser (statt /workspace),
+    // damit Dot-Dateien (.vscode-server, .ssh, .dotnet etc.) nicht im Projekt-Root landen
+    "onCreateCommand": "sudo mkdir -p /home/builduser && sudo chown builduser:builduser /home/builduser && sudo usermod -d /home/builduser builduser",
     // freetz-ng wird beim ersten Start automatisch geklont, falls noch nicht vorhanden
     "postCreateCommand": "[ -d /workspace/freetz-ng/.git ] || git clone https://github.com/Freetz-NG/freetz-ng.git /workspace/freetz-ng && ln -sf ../.config /workspace/freetz-ng/.config",
     "postStartCommand": "cd /workspace/freetz-ng && git pull",

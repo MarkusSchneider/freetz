@@ -1,5 +1,0 @@
-[user]
-	name = Markus Schneider
-	email = m.schneider@online.de
-[credential]
-	helper = "!f() { /workspace/.vscode-server/bin/994fd12f8d3a5aa16f17d42c041e5809167e845a/node /tmp/vscode-remote-containers-ecb7e14b-d22c-4ff1-b6c1-64223e0d9ec2.js git-credential-helper $*; }; f"
