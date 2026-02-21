@@ -1,1 +1,9 @@
 .freetz-ng
+# builduser home files that land in /workspace (container artefacts)
+.cache/
+.dotnet/
+.gitconfig
+.ssh/
+.sudo_as_admin_successful
+.vscode-server/
+.devcontainer/*Marker

@@ -1,0 +1,13 @@
+{
+    // Hide builduser home artefacts that land in /workspace because the container
+    // image sets BUILD_USER_HOME=/workspace by default.
+    "files.exclude": {
+        ".cache": true,
+        ".dotnet": true,
+        ".gitconfig": true,
+        ".ssh": true,
+        ".sudo_as_admin_successful": true,
+        ".vscode-server": true,
+        ".devcontainer/*Marker": true
+    }
+}
