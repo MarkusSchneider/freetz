@@ -19,7 +19,7 @@ make
 Das Image liegt dann unter freetz-ng/images
 
 Konfiguration sichern
-````bash
+```bash
 cp /workspace/freetz-ng/.config /workspace/fritz6591-cable.config
 ```
 
