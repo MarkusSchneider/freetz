@@ -1,5 +1,5 @@
 .freetz-ng
-# builduser home files that land in /workspace (container artefacts)
+.freetz-dl
 .cache/
 .dotnet/
 .gitconfig

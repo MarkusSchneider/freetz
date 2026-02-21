@@ -19,6 +19,6 @@
         "nofile=262144:262144"
     ],
     // freetz-ng wird beim ersten Start automatisch geklont, falls noch nicht vorhanden
-    "postCreateCommand": "[ -d /workspace/freetz-ng/.git ] || git clone https://github.com/Freetz-NG/freetz-ng.git /workspace/freetz-ng && ln -sf ../.config /workspace/freetz-ng/.config",
+    "postCreateCommand": "([ -d /workspace/freetz-ng/.git ] || git clone https://github.com/Freetz-NG/freetz-ng.git /workspace/freetz-ng) && ln -sf /workspace/.config /workspace/freetz-ng/.config",
     "postStartCommand": "cd /workspace/freetz-ng && git pull"
 }
