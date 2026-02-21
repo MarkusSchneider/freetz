@@ -136,55 +136,7 @@ Falls die Box nicht mehr über das Webinterface erreichbar ist:
 
 ---
 
-## Alternativer Workflow ohne Dev Container
-
-Falls kein VS Code verwendet wird, kann der Container auch direkt mit Docker gestartet werden:
-
-```bash
-# freetz-ng klonen
-git clone https://github.com/Freetz-NG/freetz-ng.git
-cd freetz-ng
-
-# Interaktive Shell im Build-Container starten
-docker run --rm -it \
-  --ulimit nofile=262144:262144 \
-  -e BUILD_USER_UID=$(id -u) \
-  -e BUILD_USER_GID=$(id -g) \
-  -v "$PWD":/workspace \
-  pfichtner/freetz
-
-# Im Container:
-make menuconfig
-make
-```
-
-Für automatisierte/non-interaktive Builds (z. B. CI):
-
-```bash
-docker run --rm \
-  --ulimit nofile=262144:262144 \
-  -e BUILD_USER_UID=$(id -u) \
-  -v "$PWD":/workspace \
-  pfichtner/freetz \
-  /bin/bash -c "make oldconfig && make"
-```
-
----
-
 ## Tipps & Tricks
-
-### Download-Cache zwischen Builds teilen
-
-Um zu vermeiden, dass AVM-Images und Quellen bei jedem Build neu heruntergeladen werden, kann der `dl/`-Ordner außerhalb des Containers gemountet werden:
-
-```bash
-docker run --rm -it \
-  --ulimit nofile=262144:262144 \
-  -e BUILD_USER_UID=$(id -u) \
-  -v "$PWD":/workspace \
-  -v "$HOME/freetz-dl-cache":/workspace/dl \
-  pfichtner/freetz
-```
 
 ### Build-Artefakte bereinigen
 
@@ -209,12 +161,6 @@ Beim nächsten Checkout:
 ```bash
 cp /workspace/fritz6591-cable.config /workspace/freetz-ng/.config
 make oldconfig   # Neue Optionen mit Standardwerten auffüllen
-```
-
-### Image-Update
-
-```bash
-docker pull pfichtner/freetz
 ```
 
 ---

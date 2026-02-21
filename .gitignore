@@ -7,3 +7,4 @@
 .sudo_as_admin_successful
 .vscode-server/
 .devcontainer/*Marker
+.wget-hsts
